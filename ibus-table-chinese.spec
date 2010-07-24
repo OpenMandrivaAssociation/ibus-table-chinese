@@ -1,6 +1,3 @@
-%define	version 1.2.0.20100305
-%define	release %mkrel 2
-
 Name:      ibus-table-chinese
 Summary:   ibus-chinese - table-based engine
 Version:   1.3.0.20100527
