@@ -1,5 +1,6 @@
 Name:      ibus-table-chinese
 Summary:   ibus-chinese - table-based engine
+Epoch:     1
 Version:   1.3.0.20100527
 Release:   %mkrel 1
 Group:     System/Internationalization
@@ -122,6 +123,7 @@ ibus-table-zhengma provides zhengma input method on IBus Table under IBus framew
 Group: System/Internationalization
 Summary: ibus-cangjie - table-based engine
 Requires: ibus-table >= 1.3.0
+Obsoletes: ibus-table-quick < 1.2.0.20100106
 
 %description -n ibus-table-cangjie
 ibus-table-cangjie provide CangJie input methods on IBus Table under IBus framework.
