@@ -2,7 +2,7 @@ Name:      ibus-table-chinese
 Summary:   ibus-chinese - table-based engine
 Epoch:     1
 Version:   1.3.0.20100527
-Release:   %mkrel 1
+Release:   %mkrel 2
 Group:     System/Internationalization
 License:   GPLv3+
 URL:       http://code.google.com/p/ibus/
@@ -38,8 +38,21 @@ ibus-table-wu provides wu input method on IBus Table under IBus framework.
 
 %files -n ibus-table-wu
 %defattr(-,root,root)
-%{_datadir}/ibus-table/icons/wu*
-%{_datadir}/ibus-table/tables/wu*.db
+%{_datadir}/ibus-table/icons/wu.png
+%{_datadir}/ibus-table/tables/wu.db
+
+%package -n ibus-table-wubi
+Group: System/Internationalization
+Summary: ibus-wubi - table-based engine
+Requires: ibus-table >= 1.3.0
+
+%description -n ibus-table-wubi
+ibus-table-wubi provides wubi86 input method on IBus Table under IBus framework.
+
+%files -n ibus-table-wubi
+%defattr(-,root,root)
+%{_datadir}/ibus-table/icons/wubi86.svg
+%{_datadir}/ibus-table/tables/wubi86.db
 
 %package -n ibus-table-yong
 Group: System/Internationalization
