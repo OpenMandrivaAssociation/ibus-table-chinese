@@ -10,7 +10,6 @@ Source0:   http://ibus.googlecode.com/files/%{name}-%{version}-Source.tar.gz
 Patch0:    ibus-table-chinese-1.3.0.20101126-out-of-source-build.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: ibus-table-devel >= 1.3.0
-BuildRequires: ibus-table-extraphrase >= 1.2.0
 BuildRequires: cmake
 BuildArch:	noarch
 
