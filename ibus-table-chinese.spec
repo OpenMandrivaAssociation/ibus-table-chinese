@@ -1,15 +1,17 @@
 Name:      ibus-table-chinese
 Summary:   ibus-chinese - table-based engine
 Epoch:     1
-Version:   1.3.0.20100527
-Release:   %mkrel 3
+Version:   1.3.0.20101126
+Release:   %mkrel 1
 Group:     System/Internationalization
 License:   GPLv3+
 URL:       http://code.google.com/p/ibus/
-Source0:   http://ibus.googlecode.com/files/%{name}-%{version}.tar.gz
+Source0:   http://ibus.googlecode.com/files/%{name}-%{version}-Source.tar.gz
+Patch0:    ibus-table-chinese-1.3.0.20101126-out-of-source-build.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: ibus-table-devel >= 1.3.0
 BuildRequires: ibus-table-extraphrase >= 1.2.0
+BuildRequires: cmake
 BuildArch:	noarch
 
 %description
@@ -51,8 +53,8 @@ ibus-table-wubi provides wubi86 input method on IBus Table under IBus framework.
 
 %files -n ibus-table-wubi
 %defattr(-,root,root)
-%{_datadir}/ibus-table/icons/wubi86.svg
-%{_datadir}/ibus-table/tables/wubi86.db
+%{_datadir}/ibus-table/icons/wubi*86.svg
+%{_datadir}/ibus-table/tables/wubi*86.db
 
 %package -n ibus-table-yong
 Group: System/Internationalization
@@ -67,45 +69,6 @@ ibus-table-yong provides yong input method on IBus Table under IBus framework.
 %{_datadir}/ibus-table/icons/yong*
 %{_datadir}/ibus-table/tables/yong*.db
 
-%package -n ibus-table-zhuyin
-Group: System/Internationalization
-Summary: ibus-zhuyin - table-based engine
-Requires: ibus-table >= 1.3.0
-
-%description -n ibus-table-zhuyin
-ibus-table-zhuyin provides zhuyin input method on IBus Table under IBus framework.
-
-%files -n ibus-table-zhuyin
-%defattr(-,root,root)
-%{_datadir}/ibus-table/icons/zhuyin*
-%{_datadir}/ibus-table/tables/zhuyin*.db
-
-%package -n ibus-table-ziranma
-Group: System/Internationalization
-Summary: ibus-ziranma - table-based engine
-Requires: ibus-table >= 1.3.0
-
-%description -n ibus-table-ziranma
-ibus-table-ziranma provides ziranma input method on IBus Table under IBus framework.
-
-%files -n ibus-table-ziranma
-%defattr(-,root,root)
-%{_datadir}/ibus-table/icons/ziranma*
-%{_datadir}/ibus-table/tables/ziranma*.db
-
-%package -n ibus-table-xinhua
-Group: System/Internationalization
-Summary: ibus-xinhua - table-based engine
-Requires: ibus-table >= 1.3.0
-
-%description -n ibus-table-xinhua
-ibus-table-xinhua provides Xinhua input method on IBus Table under IBus framework.
-
-%files -n ibus-table-xinhua
-%defattr(-,root,root)
-%{_datadir}/ibus-table/icons/xinhua*
-%{_datadir}/ibus-table/tables/xinhua*.db
-
 %package -n ibus-table-stroke5
 Group: System/Internationalization
 Summary: ibus-stroke5 - table-based engine
@@ -118,19 +81,6 @@ ibus-table-stroke5 provides stroke5 input method on IBus Table under IBus framew
 %defattr(-,root,root)
 %{_datadir}/ibus-table/icons/stroke5*
 %{_datadir}/ibus-table/tables/stroke5*.db
-
-%package -n ibus-table-zhengma
-Group: System/Internationalization
-Summary: ibus-zhengma - table-based engine
-Requires: ibus-table >= 1.3.0
-
-%description -n ibus-table-zhengma
-ibus-table-zhengma provides zhengma input method on IBus Table under IBus framework.
-
-%files -n ibus-table-zhengma
-%defattr(-,root,root)
-%{_datadir}/ibus-table/icons/zhengma*
-%{_datadir}/ibus-table/tables/zhengma*.db
 
 %package -n ibus-table-cangjie
 Group: System/Internationalization
@@ -177,16 +127,34 @@ ibus-table-cantonese provides cantonese input method on IBus Table under IBus fr
 %{_datadir}/ibus-table/tables/cantonhk.db
 %{_datadir}/ibus-table/tables/jyutping.db
 
+%package -n ibus-table-array30
+Group: System/Internationalization
+Summary: ibus-array30 - table-based engine
+Requires: ibus-table >= 1.3.0
+
+%description -n ibus-table-array30
+ibus-table-array30 provides array30 input method on IBus Table under IBus framework.
+
+%files -n ibus-table-array30
+%defattr(-,root,root)
+%{_datadir}/ibus-table/icons/array30-big.png
+%{_datadir}/ibus-table/icons/array30.png
+%{_datadir}/ibus-table/tables/array30-big.db
+%{_datadir}/ibus-table/tables/array30.db
+
+#---------------------------------------------------------------------------
+
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-Source
+%patch0 -p0
 
 %build
-%configure2_5x --enable-extra-phrases
+%cmake
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
+%makeinstall_std -C build
 
 rm -rf %buildroot%_datadir/doc
 
