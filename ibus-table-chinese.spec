@@ -1,8 +1,8 @@
 Name:      ibus-table-chinese
 Summary:   ibus-chinese - table-based engine
 Epoch:     1
-Version:   1.3.0.20101126
-Release:   %mkrel 2
+Version:   1.3.0.20101206
+Release:   %mkrel 1
 Group:     System/Internationalization
 License:   GPLv3+
 URL:       http://code.google.com/p/ibus/
@@ -226,15 +226,15 @@ ibus-table-array30 provides array30 input method on IBus Table under IBus framew
 
 %prep
 %setup -q -n %{name}-%{version}-Source
-%patch0 -p0
+#%patch0 -p0
 
 %build
-%cmake
+cmake . -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std -C build
+%makeinstall_std
 
 rm -rf %buildroot%_datadir/doc
 
