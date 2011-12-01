@@ -232,10 +232,10 @@ cmake . -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DDATA_DIR:PATH=%{_datadir}
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 rm -rf %buildroot%_datadir/doc
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
