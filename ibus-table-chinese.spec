@@ -2,7 +2,7 @@ Name:      ibus-table-chinese
 Summary:   ibus-chinese - table-based engine
 Epoch:     1
 Version:   1.3.1
-Release:   %mkrel 1
+Release:   %mkrel 4
 Group:     System/Internationalization
 License:   GPLv3+
 URL:       http://code.google.com/p/ibus/
@@ -232,10 +232,49 @@ cmake . -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DDATA_DIR:PATH=%{_datadir}
 %make
 
 %install
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 rm -rf %buildroot%_datadir/doc
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
+
+
+%changelog
+* Sun Jun 26 2011 Funda Wang <fwang@mandriva.org> 1:1.3.1-1mdv2011.0
++ Revision: 687309
+- new version 1.3.1
+
+* Fri May 06 2011 Funda Wang <fwang@mandriva.org> 1:1.3.0.20101206-2
++ Revision: 669832
+- rebuild
+
+* Sat Apr 30 2011 Funda Wang <fwang@mandriva.org> 1:1.3.0.20101206-1
++ Revision: 660805
+- new version  1.3.0.20101206
+
+* Tue Apr 26 2011 Funda Wang <fwang@mandriva.org> 1:1.3.0.20101126-2
++ Revision: 659317
+- rebuild for new ibus
+
+* Tue Nov 30 2010 Funda Wang <fwang@mandriva.org> 1:1.3.0.20101126-1mdv2011.0
++ Revision: 603422
+- extra phrase not needed
+- new version 1.3.0.20101126
+
+* Tue Jul 27 2010 Funda Wang <fwang@mandriva.org> 1:1.3.0.20100527-3mdv2011.0
++ Revision: 561875
+- rebuild for missing packages
+
+* Sat Jul 24 2010 Funda Wang <fwang@mandriva.org> 1:1.3.0.20100527-2mdv2011.0
++ Revision: 558246
+- split ibus-table-wubi into correct package
+
+* Sat Jul 24 2010 Funda Wang <fwang@mandriva.org> 1:1.3.0.20100527-1mdv2011.0
++ Revision: 558222
+- add epoch for ibus-table-cangjie
+- drop old code
+- import ibus-table-chinese
+
+
