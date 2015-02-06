@@ -2,7 +2,7 @@ Summary:	ibus-chinese - table-based engine
 Name:		ibus-table-chinese
 Epoch:		1
 Version:	1.4.6
-Release:	1
+Release:	2
 License:	GPLv3+
 Group:		System/Internationalization
 Url:		http://code.google.com/p/ibus/
